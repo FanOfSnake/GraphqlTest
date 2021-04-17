@@ -30,7 +30,8 @@ namespace GraphqlTest
 
             services
                 .AddGraphQLServer()
-                .AddQueryType<Query>();
+                .AddQueryType<Query>()
+                .AddMutationType<Mutation>();
         
         }
 
