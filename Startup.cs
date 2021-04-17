@@ -27,6 +27,11 @@ namespace GraphqlTest
         {
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+
+            services
+                .AddGraphQLServer()
+                .AddQueryType<Query>();
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +40,8 @@ namespace GraphqlTest
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+
             }
             else
             {
@@ -49,7 +56,7 @@ namespace GraphqlTest
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapGraphQL();
             });
         }
     }
