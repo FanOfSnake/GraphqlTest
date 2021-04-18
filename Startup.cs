@@ -28,12 +28,13 @@ namespace GraphqlTest
 
             services
                 .AddGraphQLServer()
-                .AddQueryType<Query>()
+                .AddQueryType<SpeakerQuerys>()
                 .AddMutationType<SpeakerMutation>()
                 .AddType<SpeakerType>()
-                .EnableRelaySupport()
-                .AddDataLoader<SpeakerByIdDataLoader>()
-                .AddDataLoader<SessionByIdDataLoader>();
+                .AddType<SessionType>()
+                .AddType<AttendeeType>()
+                .AddType<TrackType>()
+                .EnableRelaySupport();
 
         }
 

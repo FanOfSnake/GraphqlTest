@@ -8,9 +8,9 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GraphqlTest
+namespace GraphqlTest.Speakers
 {
-    public class Query
+    public class SpeakerQuerys
     {
         [UseApplicationDbContext]
         public Task<List<Speaker>> GetSpeakers([ScopedService] ApplicationDbContext context)
