@@ -29,7 +29,7 @@ namespace GraphqlTest
             services
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
-                .AddMutationType(d=>d.Name("Mutation"))
+                .AddMutationType<SpeakerMutation>()
                 .AddType<SpeakerType>()
                 .EnableRelaySupport()
                 .AddDataLoader<SpeakerByIdDataLoader>()

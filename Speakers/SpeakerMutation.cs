@@ -1,15 +1,10 @@
 ﻿using GraphqlTest.Data;
 using GraphqlTest.Extensions;
 using HotChocolate;
-using HotChocolate.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GraphqlTest.Speakers
 {
-    [ExtendObjectType(Name = "Mutation")]
     public class SpeakerMutation
     {
         [UseApplicationDbContext]
