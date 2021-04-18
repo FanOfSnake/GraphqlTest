@@ -2,6 +2,7 @@
 using GraphqlTest.DataLoader;
 using GraphqlTest.Extensions;
 using HotChocolate;
+using HotChocolate.Types.Relay;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading;
@@ -17,7 +18,7 @@ namespace GraphqlTest
 
 
         public Task<Speaker> GetSpeakerAsync(
-            int id,
+            [ID(nameof(Speaker))]int id,
             SpeakerByIdDataLoader dataLoader,
             CancellationToken cancellationToken)
             => dataLoader.LoadAsync(id, cancellationToken);
