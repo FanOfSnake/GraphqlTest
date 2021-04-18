@@ -31,6 +31,7 @@ namespace GraphqlTest
                 .AddQueryType<Query>()
                 .AddMutationType(d=>d.Name("Mutation"))
                 .AddType<SpeakerType>()
+                .EnableRelaySupport()
                 .AddDataLoader<SpeakerByIdDataLoader>()
                 .AddDataLoader<SessionByIdDataLoader>();
 
