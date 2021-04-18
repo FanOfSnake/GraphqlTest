@@ -1,15 +1,11 @@
 using GraphqlTest.Data;
+using GraphqlTest.DataLoader;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GraphqlTest
 {
@@ -31,8 +27,9 @@ namespace GraphqlTest
             services
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
-                .AddMutationType<Mutation>();
-        
+                .AddMutationType<Mutation>()
+                .AddDataLoader<SpeakerByIdDataLoader>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
