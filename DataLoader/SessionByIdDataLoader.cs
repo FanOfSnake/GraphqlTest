@@ -1,29 +1,29 @@
-﻿using System;
+﻿using GraphqlTest.Data;
+using GreenDonut;
+using HotChocolate.DataLoader;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using GraphqlTest.Data;
-using GreenDonut;
-using HotChocolate.DataLoader;
 namespace GraphqlTest.DataLoader
 {
-    public class SessionByIdDataLoader: BatchDataLoader<int,Session>
+    public class SessionByIdDataLoader : BatchDataLoader<int, Session>
     {
         private readonly IDbContextFactory<ApplicationDbContext> _dbContextFactory;
 
         public SessionByIdDataLoader(
             IBatchScheduler batchScheduler,
             IDbContextFactory<ApplicationDbContext> dbContextFactory
-            ): base (batchScheduler)
+            ) : base(batchScheduler)
         {
             _dbContextFactory = dbContextFactory ??
                 throw new ArgumentNullException(nameof(dbContextFactory));
         }
 
         protected override async Task<IReadOnlyDictionary<int, Session>> LoadBatchAsync(
-            IReadOnlyList<int> keys, 
+            IReadOnlyList<int> keys,
             CancellationToken cancellationToken)
         {
             await using ApplicationDbContext dbContext =

@@ -1,5 +1,6 @@
 ﻿using GraphqlTest.Data;
 using GraphqlTest.DataLoader;
+using GraphqlTest.Extensions;
 using HotChocolate;
 using HotChocolate.Types;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace GraphqlTest.Types
             descriptor
                 .Field(t => t.SessionSpeakers)
                 .ResolveWith<SpeakerResolvers>(t => t.GetSessionsAsync(default!, default!, default!, default))
+                .UseDbContext<ApplicationDbContext>()
                 .Name("sessions");
         }
     }
