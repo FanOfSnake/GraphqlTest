@@ -15,6 +15,7 @@ namespace GraphqlTest
         public Task<List<Speaker>> GetSpeakers([ScopedService] ApplicationDbContext context)
             => context.Speakers.ToListAsync();
 
+
         public Task<Speaker> GetSpeakerAsync(
             int id,
             SpeakerByIdDataLoader dataLoader,
