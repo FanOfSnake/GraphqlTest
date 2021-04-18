@@ -1,5 +1,6 @@
 using GraphqlTest.Data;
 using GraphqlTest.DataLoader;
+using GraphqlTest.Speakers;
 using GraphqlTest.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,7 +29,7 @@ namespace GraphqlTest
             services
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
-                .AddMutationType<SpeakerMutation>()
+                .AddMutationType(d=>d.Name("Mutation"))
                 .AddType<SpeakerType>()
                 .AddDataLoader<SpeakerByIdDataLoader>()
                 .AddDataLoader<SessionByIdDataLoader>();
