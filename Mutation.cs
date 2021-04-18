@@ -1,4 +1,5 @@
 ﻿using GraphqlTest.Data;
+using GraphqlTest.Extensions;
 using HotChocolate;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,9 @@ namespace GraphqlTest
 {
     public class Mutation
     {
+        [UseApplicationDbContext]
         public async Task<AddSpeakerPayload> AddSpeakerAsync(
-            AddSpeakerInput input,[Service] ApplicationDbContext context)
+            AddSpeakerInput input,[ScopedService] ApplicationDbContext context)
         {
             var speaker = new Speaker
             {
