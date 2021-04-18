@@ -11,7 +11,19 @@ namespace GraphqlTest.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+        }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Attendee>()
+                .HasIndex(a => a.UserName)
+                .IsUnique();
+
+            modelBuilder.Entity<SessionAttendee>()
+                .HasKey(k => new { k.SessionId, k.AttendeeId });
+
+            modelBuilder.Entity<SessionSpeaker>()
+                .HasKey(k => new { k.SessionId, k.SpeakerId });
         }
 
         public DbSet<Speaker> Speakers { get; set; } = default!;
