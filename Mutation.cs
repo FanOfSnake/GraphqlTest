@@ -12,7 +12,8 @@ namespace GraphqlTest
     {
         [UseApplicationDbContext]
         public async Task<AddSpeakerPayload> AddSpeakerAsync(
-            AddSpeakerInput input,[ScopedService] ApplicationDbContext context)
+            AddSpeakerInput input,
+            [ScopedService] ApplicationDbContext context)
         {
             var speaker = new Speaker
             {
