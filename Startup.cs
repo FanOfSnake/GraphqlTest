@@ -28,7 +28,7 @@ namespace GraphqlTest
             services
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
-                .AddMutationType<Mutation>()
+                .AddMutationType<SpeakerMutation>()
                 .AddType<SpeakerType>()
                 .AddDataLoader<SpeakerByIdDataLoader>()
                 .AddDataLoader<SessionByIdDataLoader>();
